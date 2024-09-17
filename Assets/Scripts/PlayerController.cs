@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     int isRunningHash;
     int attackTriggerHash;
     int jumpTriggerHash;
+    int yVelocityHash;
+    int isGroundedHash;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour {
         isRunningHash = Animator.StringToHash("isRunning");
         attackTriggerHash = Animator.StringToHash("attackTrigger");
         jumpTriggerHash = Animator.StringToHash("jumpTrigger");
+        yVelocityHash = Animator.StringToHash("yVelocity");
+        isGroundedHash = Animator.StringToHash("isGrounded");
 
     }
 
@@ -32,6 +36,10 @@ public class PlayerController : MonoBehaviour {
         bool jumpKey = Input.GetKeyDown(KeyCode.Space);
 
         bool isRunning = rightKey || leftKey;
+
+        animator.SetFloat(yVelocityHash, rb.velocity.y);
+
+        animator.SetBool(isGroundedHash, isGrounded);
 
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         animator.SetBool(isRunningHash, isRunning);
@@ -54,8 +62,6 @@ public class PlayerController : MonoBehaviour {
         if (stateInfo.IsName("Attack1")) {
             animator.ResetTrigger(attackTriggerHash);
         }
-
-        //isGrounded = IsGrounded();
 
         if (jumpKey && isGrounded) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
