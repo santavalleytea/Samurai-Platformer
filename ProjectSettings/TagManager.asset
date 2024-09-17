@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Cloud
   - Sky
-  - 
-  - 
-  - 
+  - Mountain 1
+  - Mountain 2
+  - Mountain 3
   - 
   - 
   - 
@@ -44,6 +44,15 @@ TagManager:
     locked: 0
   - name: Cloud
     uniqueID: 2706627087
+    locked: 0
+  - name: Mountain 1
+    uniqueID: 3697863793
+    locked: 0
+  - name: Mountain 2
+    uniqueID: 2792006043
+    locked: 0
+  - name: Mountain 3
+    uniqueID: 1672703271
     locked: 0
   - name: Default
     uniqueID: 0
