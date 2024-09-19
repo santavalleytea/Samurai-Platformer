@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private Animator animator;
     private Rigidbody2D rb;
+    private PlayerCombat playerCombat;
+    public GameObject swordHitBox;
 
     public float speed = 5.0f;
     public float jumpForce = 0.5f;
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        playerCombat = GetComponent<PlayerCombat>();
 
         isRunningHash = Animator.StringToHash("isRunning");
         attackTriggerHash = Animator.StringToHash("attackTrigger");
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour {
         yVelocityHash = Animator.StringToHash("yVelocity");
         isGroundedHash = Animator.StringToHash("isGrounded");
 
+        swordHitBox.SetActive(false);
     }
 
     void Update() {
@@ -56,10 +60,13 @@ public class PlayerController : MonoBehaviour {
 
         // Attack key trigger
         if (attackKey) {
+            playerCombat.EnableSwordHitBox();
             animator.SetTrigger(attackTriggerHash);
+
         } 
 
         if (stateInfo.IsName("Attack1")) {
+            playerCombat.DisableSwordHitBox();
             animator.ResetTrigger(attackTriggerHash);
         }
 
@@ -69,14 +76,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Ground")) {
+    private void OnTriggerEnter2D (Collider2D other) {
+        if (other.CompareTag("Ground")) {
             isGrounded = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Ground")) {
+    private void OnTriggerExit2D (Collider2D other) {
+        if (other.CompareTag("Ground")) {
             isGrounded = false;
         }
     }
