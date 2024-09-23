@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour {
-    public GameObject swordHitBox;
+    //public GameObject swordHitBox;
     public int attackDamage = 1;
 
     private void Start() {
@@ -11,11 +11,11 @@ public class PlayerCombat : MonoBehaviour {
     }
 
     public void EnableSwordHitBox() {
-        swordHitBox.SetActive(true);
+        //swordHitBox.SetActive(true);
     }
 
     public void DisableSwordHitBox() {
-        swordHitBox.SetActive(false);
+        //swordHitBox.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

@@ -58,36 +58,46 @@ public class PlayerController : MonoBehaviour {
         idleBodyParts.SetActive(true);
         playerSpriteRenderer.enabled = false;
 
-        if (rightKey) {
-            // Turn right then move
+        // Idle body hidden during non-idle states
+        if (!stateInfo.IsName("Idle")) {
             idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
-        } else if (leftKey) {
-            // Turn left then move
-            idleBodyParts.SetActive(false);
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            playerSpriteRenderer.enabled = true;
-            transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
         }
 
-        // Attack key trigger
-        if (attackKey) {
-            animator.SetTrigger(attackTriggerHash);
-            ThrowShuriken();
+        if (isRunning) {
+            // Running logic
+            idleBodyParts.SetActive(false);
+            playerSpriteRenderer.enabled = true;
 
-        } 
-
-        if (stateInfo.IsName("Attack1")) {
-            playerCombat.DisableSwordHitBox();
-            animator.ResetTrigger(attackTriggerHash);
+            if (rightKey) {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+            } else if (leftKey) {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
+            }
         }
 
         if (jumpKey && isGrounded) {
             idleBodyParts.SetActive(false);
+            playerSpriteRenderer.enabled = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetTrigger(jumpTriggerHash);
+        }
+
+        // Attack key trigger
+        if (attackKey) {
+            idleBodyParts.SetActive(false);
+            playerSpriteRenderer.enabled = true;
+            animator.SetTrigger(attackTriggerHash);
+
+        } 
+
+        if (stateInfo.IsName("Attack")) {
+            idleBodyParts.SetActive(false);
+            playerSpriteRenderer.enabled = true;
+            playerCombat.DisableSwordHitBox();
+            animator.ResetTrigger(attackTriggerHash);
         }
     }
 
