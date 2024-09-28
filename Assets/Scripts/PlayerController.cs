@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     public SpriteRenderer playerSpriteRenderer;
 
     private PlayerCombat playerCombat;
-    public GameObject shurikenPrefab;
+    //public GameObject shurikenPrefab;
     public Transform throwPoint;
   
     public float throwForce = 10f;
@@ -96,7 +96,6 @@ public class PlayerController : MonoBehaviour {
         if (stateInfo.IsName("Attack")) {
             idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
-            playerCombat.DisableSwordHitBox();
             animator.ResetTrigger(attackTriggerHash);
         }
     }
@@ -113,22 +112,22 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void ThrowShuriken() {
-        if (!canThrow) {
-            return;
-        }
+    //private void ThrowShuriken() {
+    //    if (!canThrow) {
+    //        return;
+    //    }
 
-        GameObject shuriken = Instantiate(shurikenPrefab, throwPoint.position, throwPoint.rotation);
-        Rigidbody2D rbShuriken = shuriken.GetComponent<Rigidbody2D>();
-        Vector2 throwDirection = transform.rotation.eulerAngles.y == 0 ? Vector2.right : Vector2.left;
-        rbShuriken.AddForce(throwDirection * throwForce, ForceMode2D.Impulse);
+    //    GameObject shuriken = Instantiate(shurikenPrefab, throwPoint.position, throwPoint.rotation);
+    //    Rigidbody2D rbShuriken = shuriken.GetComponent<Rigidbody2D>();
+    //    Vector2 throwDirection = transform.rotation.eulerAngles.y == 0 ? Vector2.right : Vector2.left;
+    //    rbShuriken.AddForce(throwDirection * throwForce, ForceMode2D.Impulse);
 
-        StartCoroutine(ThrowCooldown());
-    }
+    //    StartCoroutine(ThrowCooldown());
+    //}
 
-    IEnumerator ThrowCooldown() {
-        canThrow = false;
-        yield return new WaitForSeconds(throwCoolDown);
-        canThrow = true;
-    }
+    //IEnumerator ThrowCooldown() {
+    //    canThrow = false;
+    //    yield return new WaitForSeconds(throwCoolDown);
+    //    canThrow = true;
+    //}
 }
