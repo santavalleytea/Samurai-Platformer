@@ -13,9 +13,12 @@ public class SquareController : EnemyController {
     private float chaseTimer = 0f;
     private bool returningToPatrol = false;
 
+    private Vector3 originalScale;
+
     protected override void Start() {
         base.Start();
         startPosition = transform.position;
+        originalScale = transform.localScale;
     }
 
     protected override void Update() {
@@ -33,8 +36,17 @@ public class SquareController : EnemyController {
     }
     protected override void Patrol() {
         float newX = startPosition.x + Mathf.PingPong(Time.time * moveSpeed, patrolDistance);
+
+        // Flip only the X scale while keeping the original Y and Z scales
+        if (newX < transform.position.x) {
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Facing right
+        } else if (newX > transform.position.x) {
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z); // Facing left
+        }
+
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
+
 
     protected override void AttackPlayer() {
         if (player != null) {

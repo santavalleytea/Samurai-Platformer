@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private IEnumerator StopKnockback() {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         rb.velocity = Vector2.zero;
     }
 
