@@ -14,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Cloud
-  - Sky
   - 
+  - Sky
   - Foreground Trees
   - Background Trees
   - Player
@@ -41,7 +41,7 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Sky
-    uniqueID: 4030015563
+    uniqueID: 3986466921
     locked: 0
   - name: Cloud
     uniqueID: 2706627087
