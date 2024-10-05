@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour {
     public int health;
     public bool isDead = false;
 
-    private UIManager uiManager; //for UI 
+    private UIManager uiManager;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -29,11 +29,12 @@ public class PlayerHealth : MonoBehaviour {
         if (isDead) {
             return;
         }
-
+       
         health -= damage;
+        
         if (health <= 0) {
             health = 0;
-            playerDeath();
+            Destroy(gameObject);
         }
         uiManager.UpdatePlayerLives(health);
     }
