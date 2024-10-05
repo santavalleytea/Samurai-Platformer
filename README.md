@@ -21,9 +21,6 @@ The game is currently in progress, and will be updated throughout.
 - Standard control: `W A S D` to move, `Space` to jump and `Left Mouse Button` to attack.
 - Patrolling enemies; when player is detected within radius, will start chasing the player.
 
-## Installation
-
-
 ## Demo
 
 
