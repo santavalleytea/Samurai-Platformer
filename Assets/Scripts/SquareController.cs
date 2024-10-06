@@ -24,7 +24,10 @@ public class SquareController : EnemyController {
     protected override void Update() {
         DetectPlayer();
 
-        if (playerDetected) {
+        if (returningToPatrol) {
+            // If the enemy is returning to its patrol, don't chase the player, just return to the patrol
+            ReturnToPatrol();
+        } else if (playerDetected) {
             chaseTimer = chaseDuration;
             AttackPlayer();
         } else if (chaseTimer > 0) {
