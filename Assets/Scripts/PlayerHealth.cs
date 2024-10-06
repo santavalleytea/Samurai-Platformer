@@ -13,6 +13,9 @@ public class PlayerHealth : MonoBehaviour {
     public bool isDead = false;
 
     private UIManager uiManager;
+    private SpriteRenderer spriteRenderer;
+    public GameObject idleObject;
+    //public CameraShake cameraShake;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -22,6 +25,8 @@ public class PlayerHealth : MonoBehaviour {
 
         uiManager = FindObjectOfType<UIManager>();
         uiManager.UpdatePlayerLives(health);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage) {
@@ -31,6 +36,7 @@ public class PlayerHealth : MonoBehaviour {
         }
        
         health -= damage;
+        StartCoroutine(FlashRed());
         
         if (health <= 0) {
             health = 0;
@@ -45,5 +51,18 @@ public class PlayerHealth : MonoBehaviour {
         rb.velocity = Vector2.zero;
 
         FindObjectOfType<UIManager>().LoseLife();
+    }
+
+    private IEnumerator FlashRed() {
+        SpriteRenderer[] idleSprite = idleObject.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sr in idleSprite) {
+            sr.color = Color.red;
+        }
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        foreach (SpriteRenderer sr in idleSprite) {
+            sr.color = Color.white;
+        }
+        spriteRenderer.color = Color.white;
     }
 }

@@ -10,12 +10,6 @@ public class PlayerController : MonoBehaviour {
     public SpriteRenderer playerSpriteRenderer;
 
     private PlayerCombat playerCombat;
-    //public GameObject shurikenPrefab;
-    public Transform throwPoint;
-  
-    public float throwForce = 10f;
-    private bool canThrow = true;
-    public float throwCoolDown = 1.0f;
 
     public float speed = 5.0f;
     public float jumpForce = 0.5f;
@@ -111,23 +105,4 @@ public class PlayerController : MonoBehaviour {
             isGrounded = false;
         }
     }
-
-    //private void ThrowShuriken() {
-    //    if (!canThrow) {
-    //        return;
-    //    }
-
-    //    GameObject shuriken = Instantiate(shurikenPrefab, throwPoint.position, throwPoint.rotation);
-    //    Rigidbody2D rbShuriken = shuriken.GetComponent<Rigidbody2D>();
-    //    Vector2 throwDirection = transform.rotation.eulerAngles.y == 0 ? Vector2.right : Vector2.left;
-    //    rbShuriken.AddForce(throwDirection * throwForce, ForceMode2D.Impulse);
-
-    //    StartCoroutine(ThrowCooldown());
-    //}
-
-    //IEnumerator ThrowCooldown() {
-    //    canThrow = false;
-    //    yield return new WaitForSeconds(throwCoolDown);
-    //    canThrow = true;
-    //}
 }
