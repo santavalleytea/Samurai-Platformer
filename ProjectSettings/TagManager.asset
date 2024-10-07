@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - MeleeHitBox
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,13 +15,13 @@ TagManager:
   - Water
   - UI
   - Cloud
-  - 
+  - Overlay
   - Sky
   - Foreground Trees
   - Background Trees
   - Player
   - MeleeHitBox
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -55,9 +56,12 @@ TagManager:
   - name: Ground
     uniqueID: 1672703271
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Foreground Trees
     uniqueID: 2792006043
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: Overlay
+    uniqueID: 802465037
     locked: 0

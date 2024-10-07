@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public void PlayGame() {
-        SceneManager.LoadSceneAsync(1); //load scene 1 - index of SampleScene (access through file > build settings > scense in build) 
+        SceneManager.LoadSceneAsync(0); //load scene 1 - index of SampleScene (access through file > build settings > scense in build) 
     }
 
     public void QuitGame() {

@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour {
 
     private UIManager uiManager;
     private SpriteRenderer spriteRenderer;
+    public GameOverScreen gameOver;
     public GameObject idleObject;
     public int Respawn;
     //public CameraShake cameraShake;
@@ -42,7 +43,8 @@ public class PlayerHealth : MonoBehaviour {
         
         if (health <= 0) {
             health = 0;
-            SceneManager.LoadScene(Respawn);
+            gameOver.Defeat();
+            
         }
         uiManager.UpdatePlayerLives(health);
     }
