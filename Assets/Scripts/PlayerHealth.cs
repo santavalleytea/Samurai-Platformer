@@ -16,7 +16,6 @@ public class PlayerHealth : MonoBehaviour {
     private UIManager uiManager;
     private SpriteRenderer spriteRenderer;
     public GameOverScreen gameOver;
-    public GameObject idleObject;
     public int Respawn;
     //public CameraShake cameraShake;
 
@@ -58,15 +57,8 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     private IEnumerator FlashRed() {
-        SpriteRenderer[] idleSprite = idleObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sr in idleSprite) {
-            sr.color = Color.red;
-        }
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
-        foreach (SpriteRenderer sr in idleSprite) {
-            sr.color = Color.white;
-        }
         spriteRenderer.color = Color.white;
     }
 }

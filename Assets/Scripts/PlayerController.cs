@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     private Rigidbody2D rb;
 
-    public GameObject idleBodyParts;
     public SpriteRenderer playerSpriteRenderer;
 
     private PlayerCombat playerCombat;
@@ -49,18 +48,13 @@ public class PlayerController : MonoBehaviour {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         animator.SetBool(isRunningHash, isRunning);
 
-        idleBodyParts.SetActive(true);
-        playerSpriteRenderer.enabled = false;
-
         // Idle body hidden during non-idle states
         if (!stateInfo.IsName("Idle")) {
-            idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
         }
 
         if (isRunning) {
             // Running logic
-            idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
 
             if (rightKey) {
@@ -73,7 +67,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (jumpKey && isGrounded) {
-            idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetTrigger(jumpTriggerHash);
@@ -81,14 +74,12 @@ public class PlayerController : MonoBehaviour {
 
         // Attack key trigger
         if (attackKey) {
-            idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
             animator.SetTrigger(attackTriggerHash);
 
         } 
 
         if (stateInfo.IsName("Attack")) {
-            idleBodyParts.SetActive(false);
             playerSpriteRenderer.enabled = true;
             animator.ResetTrigger(attackTriggerHash);
         }
