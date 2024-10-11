@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
     public SpriteRenderer playerSpriteRenderer;
 
+    public TrailRenderer dashTrail;
+
     private PlayerCombat playerCombat;
 
     public float speed = 5.0f;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour {
         bool leftKey = Input.GetKey(KeyCode.A);
         bool attackKey = Input.GetKey(KeyCode.Mouse0);
         bool jumpKey = Input.GetKeyDown(KeyCode.Space);
+        bool dashKey = Input.GetKeyDown(KeyCode.Mouse1);
 
         bool isRunning = rightKey || leftKey;
 
@@ -83,6 +86,11 @@ public class PlayerController : MonoBehaviour {
             playerSpriteRenderer.enabled = true;
             animator.ResetTrigger(attackTriggerHash);
         }
+
+        if (dashKey) {
+            animator.SetTrigger("dashTrigger");
+            StartCoroutine(Dash());
+        }
     }
 
     private void OnTriggerEnter2D (Collider2D other) {
@@ -95,5 +103,22 @@ public class PlayerController : MonoBehaviour {
         if (other.CompareTag("Ground")) {
             isGrounded = false;
         }
+    }
+
+    IEnumerator Dash() {
+        float dashDuration = 0.2f;
+        float dashSpeed = 20.0f;
+        float startTime = Time.time;
+
+        dashTrail.enabled = true;
+
+        Vector3 dashDirection = transform.rotation.y == 0 ? Vector3.right : Vector3.left;
+
+        while (Time.time < startTime + dashDuration) {
+            transform.Translate(dashDirection * dashSpeed * Time.deltaTime, Space.World);
+            yield return null;
+        }
+
+        dashTrail.enabled = false;
     }
 }
