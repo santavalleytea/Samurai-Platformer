@@ -19,9 +19,16 @@ The game is currently in progress, and will be updated throughout.
 ## Features
 
 - Standard control: `W A S D` to move, `Space` to jump and `Left Mouse Button` to attack.
+- `Right Mouse Button` to dash; dashes through enemies without taking damage.
 - Patrolling enemies; when player is detected within radius, will start chasing the player.
 
 ## Demo
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=9LgZaANpCK8">
+    <img src="https://img.youtube.com/vi/9LgZaANpCK8/0.jpg" alt="Watch the demo video on YouTube" />
+  </a>
+</p>
 
 
 ## Assets
