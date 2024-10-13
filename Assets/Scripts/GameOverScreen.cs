@@ -16,20 +16,21 @@ public class GameOverScreen : MonoBehaviour {
         quitButton.onClick.AddListener(QuitGame);
     }
     public void Defeat() {
-        Debug.Log("Game Over Screen Activated");
         defeatScreen.SetActive(true);
         PlayerController player = FindObjectOfType<PlayerController>();
         if (player != null) {
             player.enabled = false;
         }
+        Time.timeScale = 0;
     }
 
     public void RestartGame() {
-        Debug.Log("Clicked");
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 }

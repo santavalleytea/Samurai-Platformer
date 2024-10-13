@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
     private Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
 
     public float knockbackForce = 5f;
 
@@ -49,6 +50,7 @@ public class EnemyController : MonoBehaviour {
 
     public virtual void TakeDamage(int damage, Vector2 knockbackDirection) {
         health -= damage;
+        StartCoroutine(FlashRed());
 
         rb.velocity = Vector2.zero;
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
@@ -72,5 +74,11 @@ public class EnemyController : MonoBehaviour {
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectRadius);
+    }
+
+    private IEnumerator FlashRed() {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = Color.white;
     }
 }

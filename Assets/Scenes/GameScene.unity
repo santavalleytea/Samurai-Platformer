@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c186c0c43d4a8c479f25c8545acd87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -508,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237b77d038863be46bc63267a9df1304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 116240910}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -2361,6 +2363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c186c0c43d4a8c479f25c8545acd87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -2384,6 +2387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237b77d038863be46bc63267a9df1304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 448356422}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -2956,7 +2960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526801816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6499, y: -2.88, z: -0.005652486}
+  m_LocalPosition: {x: -2.6499, y: -2.981, z: -0.005652486}
   m_LocalScale: {x: 0.27821016, y: 0.27104473, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3089,8 +3093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordHitBox: {fileID: 834263163}
-  attackDamage: 1
-  knockbackDistance: 10
 --- !u!70 &526801823
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3257,7 +3259,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -3288,14 +3290,14 @@ TrailRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 65342
       ctime2: 0
       ctime3: 0
       ctime4: 0
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 46646
+      atime0: 0
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -3318,7 +3320,7 @@ TrailRenderer:
   m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 0
-  m_ApplyActiveColorSpace: 1
+  m_ApplyActiveColorSpace: 0
 --- !u!1 &543722478
 GameObject:
   m_ObjectHideFlags: 0
@@ -3887,6 +3889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834263165}
   - component: {fileID: 834263164}
+  - component: {fileID: 834263167}
   m_Layer: 11
   m_Name: swordHitBox
   m_TagString: Untagged
@@ -3954,6 +3957,20 @@ Transform:
   m_Father: {fileID: 526801817}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834263167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834263163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3323c680c3c69df4598f1187d69e5c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1
+  knockbackDistance: 5
 --- !u!1 &872172938
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,6 +4619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c186c0c43d4a8c479f25c8545acd87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -4625,6 +4643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237b77d038863be46bc63267a9df1304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 970871618}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -7880,6 +7899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c186c0c43d4a8c479f25c8545acd87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   knockbackForce: 5
   speed: 2
   detectRadius: 5
@@ -7903,6 +7923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237b77d038863be46bc63267a9df1304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1732014709}
   knockbackForce: 5
   speed: 2
   detectRadius: 5

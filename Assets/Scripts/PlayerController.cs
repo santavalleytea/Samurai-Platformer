@@ -51,11 +51,6 @@ public class PlayerController : MonoBehaviour {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
         animator.SetBool(isRunningHash, isRunning);
 
-        // Idle body hidden during non-idle states
-        if (!stateInfo.IsName("Idle")) {
-            playerSpriteRenderer.enabled = true;
-        }
-
         if (isRunning) {
             // Running logic
             playerSpriteRenderer.enabled = true;
@@ -70,20 +65,17 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (jumpKey && isGrounded) {
-            playerSpriteRenderer.enabled = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetTrigger(jumpTriggerHash);
         }
 
         // Attack key trigger
         if (attackKey) {
-            playerSpriteRenderer.enabled = true;
             animator.SetTrigger(attackTriggerHash);
 
         } 
 
         if (stateInfo.IsName("Attack")) {
-            playerSpriteRenderer.enabled = true;
             animator.ResetTrigger(attackTriggerHash);
         }
 
@@ -106,11 +98,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     IEnumerator Dash() {
+        Physics2D.IgnoreLayerCollision(11, 13, true);
         float dashDuration = 0.2f;
         float dashSpeed = 20.0f;
         float startTime = Time.time;
 
-        dashTrail.enabled = true;
+        dashTrail.emitting = true;
 
         Vector3 dashDirection = transform.rotation.y == 0 ? Vector3.right : Vector3.left;
 
@@ -119,6 +112,8 @@ public class PlayerController : MonoBehaviour {
             yield return null;
         }
 
-        dashTrail.enabled = false;
+        Physics2D.IgnoreLayerCollision(11, 13, false);
+
+        dashTrail.emitting = false;
     }
 }
