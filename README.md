@@ -23,7 +23,7 @@ The game is currently in progress, and will be updated throughout.
 - Patrolling enemies; when player is detected within radius, will start chasing the player.
 
 ## Demo
-
+Click the thumbnail below for a short video demo.
 <p align="center">
   <a href="https://www.youtube.com/watch?v=9LgZaANpCK8">
     <img src="https://img.youtube.com/vi/9LgZaANpCK8/maxresdefault.jpg" alt="Watch the demo video on YouTube" />
