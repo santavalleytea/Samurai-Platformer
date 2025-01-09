@@ -1,7 +1,5 @@
 ## Table of Contents
 
-In progress...
-
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Demo](#demo)
@@ -35,9 +33,3 @@ Click the thumbnail below for a short video demo.
 All the sprites are drawn by me using Krita.
 ![img](Assets/Player/Attack.png)
 ![img](Assets/Player/Running.png)
-
-
-## Credits
-
-
-## License
